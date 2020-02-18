@@ -1,27 +1,44 @@
-name: 'TODO: Run <linter-name> with reviewdog'
-description: 'TODO: 🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
-author: 'TODO: <your-name>'
+name: 'Run vimlint with reviewdog'
+description: '🐶 Run vimlint with reviewdog on pull requests to improve code review experience.'
+author: 'Dusk (@bb010g, <me@bb010g.com>)'
 inputs:
   github_token:
-    description: 'GITHUB_TOKEN'
+    description: 'A token to authenticate on behalf of this GitHub App installed on your repository.'
+    required: false
     default: '${{ github.token }}'
   ### Flags for reviewdog ###
   level:
     description: 'Report level for reviewdog [info,warning,error]'
+    required: false
     default: 'error'
   reporter:
-    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
+    description: 'Reporter for reviewdog [github-pr-check,github-pr-review].'
+    required: false
     default: 'github-pr-check'
-  ### Flags for <linter-name> ###
-  locale:
-    description: '-locale flag of misspell. (US/UK)'
-    default: ''
+  ### Flags for vimlint ###
+  path:
+    description: 'Path to lint. (The empty string unsets this input.)'
+    required: false
+    default: 'autoload'
+  paths:
+    description: 'Additional paths or globs to lint (Busybox ash syntax).'
+    required: false
+  only_error:
+    description: 'Only report lint error messages [true,false].'
+    required: false
+    default: 'false'
+  verbose:
+    description: 'Lint verbosely [true,false].'
+    required: false
+    default: 'true'
+  flags:
+    description: 'Additional vimlint flags (Busybox ash syntax).'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
-# TODO: update branding if you want.
 branding:
-  icon: 'check'
-  color: 'blue'
+  icon: 'chevrons-down'
+  color: 'green'
