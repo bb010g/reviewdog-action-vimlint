@@ -1,4 +1,4 @@
-name: 'Run vimlint with reviewdog'
+name: 'Run vimlint with reviewdog (alt)'
 description: '🐶 Run vimlint with reviewdog on pull requests to improve code review experience.'
 author: 'Dusk (@bb010g, <me@bb010g.com>)'
 inputs:
