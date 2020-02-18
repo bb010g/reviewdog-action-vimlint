@@ -7,8 +7,8 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bb010g/reviewdog-action-vimlint?logo=github&sort=semver)](https://github.com/bb010g/reviewdog-action-vimlint/releases)
 [![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
 
-![github-pr-review demo](https://user-images.githubusercontent.com/3797062/73162963-4b8e2b00-4132-11ea-9a3f-f9c6f624c79f.png)
-![github-pr-check demo](https://user-images.githubusercontent.com/3797062/73163032-70829e00-4132-11ea-8481-f213a37db354.png)
+![github-pr-review demo](https://user-images.githubusercontent.com/340132/74712032-3dd04080-51da-11ea-9e48-0971aebd2c71.png)
+![github-pr-check demo](https://user-images.githubusercontent.com/340132/74712665-b1268200-51db-11ea-88d0-a3732cc091a2.png)
 
 This action runs [vim-vimlint](https://github.com/syngan/vim-vimlint) with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve code review experience.
 

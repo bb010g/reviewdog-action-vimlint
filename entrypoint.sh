@@ -1,7 +1,6 @@
 #!/bin/ash
 # shellcheck shell=sh
-# shellcheck disable=SC2039
-set -eo pipefail
+set -e
 
 if [ -n "${GITHUB_WORKSPACE}" ]; then
   cd "${GITHUB_WORKSPACE}" || exit
