@@ -5,13 +5,16 @@ ENV REVIEWDOG_VERSION=v0.9.17
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
 # hadolint ignore=DL3006
-RUN apk --no-cache add git
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ "${REVIEWDOG_VERSION}"
 
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
+RUN wget_gh() { mkdir "${4:-$2}" && wget -O - -q "https://github.com/$1/$2/archive/${3:-master}.tar.gz" | tar -C "${4:-$2}" -xz --strip-components=1; }; \
+  apk --no-cache add vim && \
+  mkdir -p /opt/vim && cd /opt/vim && \
+    wget_gh ynkdir vim-vimlparser master vimlparser && \
+    wget_gh syngan vim-vimlint master vimlint && \
+  :
 
-# TODO: Install a linter and/or change docker image as you need.
-RUN wget -O - -q https://git.io/misspell | sh -s -- -b /usr/local/bin/
+COPY entrypoint.sh /opt/gh-action-entrypoint.sh
 
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/opt/gh-action-entrypoint.sh"]
+# vim:et:sw=2:sts=2:sta:tw=0
